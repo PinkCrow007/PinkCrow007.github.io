@@ -18,3 +18,17 @@ img {
 #footer{
 background-color: rgb(220, 205, 182);
 }
+#aside-content .card-info #card-info-btn{
+    background-color: rgb(220, 205, 182);
+}
+#rightside > div > button, #rightside > div > a{
+    background-color: rgb(220, 205, 182);  
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    background: rgb(220, 205, 182);
+  }
+#pagination .page-number.current{
+background: rgb(220, 205, 182);
+  }
