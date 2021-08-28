@@ -1,0 +1,11 @@
+body {
+    cursor: url(https://cdn.jsdelivr.net/gh/lete114/CDN@1.0/Use/Jkll8I.png), auto;
+}
+#page-header {
+    /* 背景图像的地址（url括号里）  */
+    background: url(https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210827231029234.png);
+    /* 背景图像不重复 */
+    background-repeat: no-repeat;
+    /* 背景图像大小 */
+    background-size: cover;
+  }
