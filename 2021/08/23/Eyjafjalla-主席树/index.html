@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Eyjafjalla-主席树 | Hexo</title><meta name="keywords" content="ACM,倍增,主席树"><meta name="author" content="Pink Crow"><meta name="copyright" content="Pink Crow"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="牛客多校第九场E Eyjafjalla链接：https:&#x2F;&#x2F;ac.nowcoder.com&#x2F;acm&#x2F;contest&#x2F;11260&#x2F;E来源：牛客网 There are n cities in the volcano country, numbered from 1 to n. The city 1 is the capital of the country, called Eyjafjalla. A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Eyjafjalla-主席树">
+<meta property="og:url" content="https://pinkcrow007.github.io/2021/08/23/Eyjafjalla-%E4%B8%BB%E5%B8%AD%E6%A0%91/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="牛客多校第九场E Eyjafjalla链接：https:&#x2F;&#x2F;ac.nowcoder.com&#x2F;acm&#x2F;contest&#x2F;11260&#x2F;E来源：牛客网 There are n cities in the volcano country, numbered from 1 to n. The city 1 is the capital of the country, called Eyjafjalla. A">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210829211448542.png">
+<meta property="article:published_time" content="2021-08-23T13:27:09.000Z">
+<meta property="article:modified_time" content="2021-08-29T13:20:24.000Z">
+<meta property="article:author" content="Pink Crow">
+<meta property="article:tag" content="ACM">
+<meta property="article:tag" content="倍增">
+<meta property="article:tag" content="主席树">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210829211448542.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://pinkcrow007.github.io/2021/08/23/Eyjafjalla-%E4%B8%BB%E5%B8%AD%E6%A0%91/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Eyjafjalla-主席树',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-08-29 21:20:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/myfix.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210828114334929.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210829211448542.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Eyjafjalla-主席树</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-08-23T13:27:09.000Z" title="发表于 2021-08-23 21:27:09">2021-08-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-08-29T13:20:24.000Z" title="更新于 2021-08-29 21:20:24">2021-08-29</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">582</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Eyjafjalla-主席树"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="牛客多校第九场E-Eyjafjalla"><a href="#牛客多校第九场E-Eyjafjalla" class="headerlink" title="牛客多校第九场E Eyjafjalla"></a>牛客多校第九场E Eyjafjalla</h3><p>链接：<a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/11260/E">https://ac.nowcoder.com/acm/contest/11260/E</a><br>来源：牛客网</p>
+<p>There are n cities in the volcano country, numbered from 1 to n. The city 1 is the capital of the country, called Eyjafjalla. A large volcano is located in the capital, so the temperature there is quite high. The temperature of city i is denoted by tit_iti.</p>
+<p> The n cities are connected by n-1 undirected roads. The i-th road connects city uiu_iui​ and city viv_ivi​. If uiu_iui​ is closer to the capital than viv_ivi​, then tui&gt;tvit_{u_i}&gt;t_{v_i}tui​​&gt;tvi​​. The capital has the highest temperature.</p>
+<p> The coronavirus is now spreading across the whole world. Although the volcano country is far away from the mess, Cuber QQ, the prime minister of the country, is still designing an emergency plan in case some city getting infected. Now he wants to know if a virus whose survival temperature range is [l, r] breaks out in city x, how many cities will be infected. The assumption is that, if the temperature of one city is between l and r inclusive, and it is connected to another infected city, it is infected too.</p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">The first line contains an integer n (1≤n≤1051 \leq n \leq 10^51≤n≤105), representing the number of cities. </span><br><span class="line"></span><br><span class="line">In each of the next n-1 lines, there are two integers u,v (1≤u,v≤n1 \le u, v \le n1≤u,v≤n, u≠vu \neq vu=v) per line, denoting that a road connecting u and v.</span><br><span class="line"></span><br><span class="line">The next line contains n space-separated integers t1,t2,…,tnt_1,t_2,\dots, t_nt1,t2,…,tn (1≤ti≤1091\leq t_i \leq 10^91≤ti≤109), representing the temperature in each city.</span><br><span class="line"></span><br><span class="line">The next line contains one integer q (1≤q≤1051 \le q \le 10^51≤q≤105), representing the number of queries.</span><br><span class="line"></span><br><span class="line">The next q lines contain one query each line. Each query is 3 space-separated integers x,l,r (1≤x≤n,1≤l≤r≤1091 \leq x \leq n, 1 \leq l \leq r \leq 10^91≤x≤n,1≤l≤r≤109), representing a query that a virus whose survival temperature range is [l, r] breaks out in city x.</span><br></pre></td></tr></table></figure>
+
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">For each query, output one integer representing the number of cities that will be infected. As a special case, if tx∉[l,r]t_x\notin [l,r]tx∈/[l,r], please output 0.</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210829211448542.png" alt="image-20210829211448542"></p>
+<p>​    <strong>倍增往上跳，dfn序列上记录t值，主席树找区间大于t的数量</strong></p>
+<ul>
+<li><p>病毒传播可以看作两个阶段，第一 个阶段先上升到最高的一个节点 <em>p</em>， 第二阶段感染 <em>p</em> 的子树中所有温度大于 <em>l</em> 的城市。 </p>
+</li>
+<li><p>第一阶段可以通过倍增法求得 p；</p>
+</li>
+<li><p>第二阶段相当于在 p 的子树中查询权值大于 <em>l</em> 的节点个数，根据每个节点的 dfs 序建立可持久化线段树，然后在线段树上查询即可。</p>
+</li>
+<li><p>时间复杂度 O(<em>n</em> log <em>n</em>)</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Pink Crow</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://pinkcrow007.github.io/2021/08/23/Eyjafjalla-%E4%B8%BB%E5%B8%AD%E6%A0%91/">https://pinkcrow007.github.io/2021/08/23/Eyjafjalla-%E4%B8%BB%E5%B8%AD%E6%A0%91/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://pinkcrow007.github.io" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ACM/">ACM</a><a class="post-meta__tags" href="/tags/%E5%80%8D%E5%A2%9E/">倍增</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E5%B8%AD%E6%A0%91/">主席树</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210829211448542.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/08/26/%E9%98%85%E8%AF%BBxv6%E6%BA%90%E7%A0%81/"><img class="prev-cover" src="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210828003805755.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">操作系统课程设计--阅读xv6源码</div></div></a></div><div class="next-post pull-right"><a href="/2021/08/22/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"><img class="next-cover" src="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210829194838658.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">wordpress建站遇到的坑（都是镜像的锅qwq）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/08/15/求逆序对/" title="求逆序对"><img class="cover" src="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210829201531183.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-15</div><div class="title">求逆序对</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210828114334929.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Pink Crow</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">平安喜乐 万事顺意</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%9B%E5%AE%A2%E5%A4%9A%E6%A0%A1%E7%AC%AC%E4%B9%9D%E5%9C%BAE-Eyjafjalla"><span class="toc-number">1.</span> <span class="toc-text">牛客多校第九场E Eyjafjalla</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0"><span class="toc-number"></span> <span class="toc-text">输入描述:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0"><span class="toc-number"></span> <span class="toc-text">输出描述:</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/08/26/%E9%98%85%E8%AF%BBxv6%E6%BA%90%E7%A0%81/" title="操作系统课程设计--阅读xv6源码"><img src="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210828003805755.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统课程设计--阅读xv6源码"/></a><div class="content"><a class="title" href="/2021/08/26/%E9%98%85%E8%AF%BBxv6%E6%BA%90%E7%A0%81/" title="操作系统课程设计--阅读xv6源码">操作系统课程设计--阅读xv6源码</a><time datetime="2021-08-26T08:13:05.000Z" title="发表于 2021-08-26 16:13:05">2021-08-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/23/Eyjafjalla-%E4%B8%BB%E5%B8%AD%E6%A0%91/" title="Eyjafjalla-主席树"><img src="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210829211448542.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Eyjafjalla-主席树"/></a><div class="content"><a class="title" href="/2021/08/23/Eyjafjalla-%E4%B8%BB%E5%B8%AD%E6%A0%91/" title="Eyjafjalla-主席树">Eyjafjalla-主席树</a><time datetime="2021-08-23T13:27:09.000Z" title="发表于 2021-08-23 21:27:09">2021-08-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/22/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="wordpress建站遇到的坑（都是镜像的锅qwq）"><img src="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210829194838658.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="wordpress建站遇到的坑（都是镜像的锅qwq）"/></a><div class="content"><a class="title" href="/2021/08/22/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="wordpress建站遇到的坑（都是镜像的锅qwq）">wordpress建站遇到的坑（都是镜像的锅qwq）</a><time datetime="2021-08-22T13:23:35.000Z" title="发表于 2021-08-22 21:23:35">2021-08-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/20/axios%E5%AE%9E%E7%8E%B012306%E7%81%AB%E8%BD%A6%E7%A5%A8%E6%9F%A5%E8%AF%A2%E5%8A%9F%E8%83%BD-%E7%88%AC%E8%99%AB/" title="axios实现12306火车票查询功能 爬虫"><img src="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210827235254392.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="axios实现12306火车票查询功能 爬虫"/></a><div class="content"><a class="title" href="/2021/08/20/axios%E5%AE%9E%E7%8E%B012306%E7%81%AB%E8%BD%A6%E7%A5%A8%E6%9F%A5%E8%AF%A2%E5%8A%9F%E8%83%BD-%E7%88%AC%E8%99%AB/" title="axios实现12306火车票查询功能 爬虫">axios实现12306火车票查询功能 爬虫</a><time datetime="2021-08-20T14:46:35.000Z" title="发表于 2021-08-20 22:46:35">2021-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/15/%E6%B1%82%E9%80%86%E5%BA%8F%E5%AF%B9/" title="求逆序对"><img src="https://gitee.com/pinkcrow/hexo_img/raw/master/img/image-20210829201531183.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="求逆序对"/></a><div class="content"><a class="title" href="/2021/08/15/%E6%B1%82%E9%80%86%E5%BA%8F%E5%AF%B9/" title="求逆序对">求逆序对</a><time datetime="2021-08-15T13:27:09.000Z" title="发表于 2021-08-15 21:27:09">2021-08-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Pink Crow</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'UcFpfL2gQAps8CuCCQIg6hBB-gzGzoHsz',
+      appKey: 'kRCWNukGYPS9GLMYVSnPw7q7',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="/js/myfix.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
